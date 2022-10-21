@@ -34,6 +34,7 @@ const container = document.querySelector('.game_container');
 const select = document.querySelector('[name="levels"]');
 
 let squareForRow;
+const bombsNumber = 16;
 
 
 document.getElementById('start').addEventListener('click', function(){
@@ -62,8 +63,6 @@ function createSquare(idSquare) {
   square.style.height = generateCalc();
   square.addEventListener('click', clickSquare);
   container.append(square);
-
-  console.log(idSquare);
 }
 
 
