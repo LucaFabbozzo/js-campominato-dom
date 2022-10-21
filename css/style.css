@@ -47,7 +47,7 @@ select {
   background-color: #7DFFD4;
 }
 
-.game_container {
+.grid {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -62,8 +62,8 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: calc(100% / 10);
-  height: calc(100% / 10); */
+  width: calc(100% / 10);
+  height: calc(100% / 10);
   border: 1px solid black;
 }
 

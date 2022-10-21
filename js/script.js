@@ -27,80 +27,158 @@
     //cancello tutte le bombe
     //cancello la griglia
 
+// const container = document.querySelector('.game_container');
+// // select levels
+// const select = document.querySelector('[name="levels"]');
+
+// let squareForRow;
+// const bombsNumber = 16;
+// let bombs = [];
+// let score = 0;
 
 
-const container = document.querySelector('.game_container');
-// select levels
-const select = document.querySelector('[name="levels"]');
 
-let squareForRow;
+// document.getElementById('start').addEventListener('click', function(){
+//   squareForRow = document.querySelector('[name="levels"]').value;
+//   container.innerHTML = '';
+//   init(squareForRow);
+// })
+
+
+// function init(numElements) {
+//   const totalSquares = numElements * numElements;
+//   for(let i = 0; i < totalSquares; i++) {
+ 
+//    createSquare(i);
+
+//   }
+
+
+// }
+
+// function createSquare(idSquare) {
+
+//   const square = document.createElement('div');
+//   square.className = 'square';
+//   square.idSquare = idSquare + 1;
+//   square.innerText = idSquare + 1;
+//   square.style.width = generateCalc();
+//   square.style.height = generateCalc();
+//   square.addEventListener('click', clickSquare);
+//   container.append(square);
+// }
+
+// function createBombs(totalSquares) {
+  
+//    while (bombs.length < bombsNumber) {
+//       const bomb = generateRandomNumber(1, totalSquares);   
+//       if (!bombs.includes(bomb)) {
+//         bombs.push(bomb)
+//      }
+//     }
+
+    
+// }
+
+// function clickSquare() {
+//   this.classList.add('azure');
+//   console.log(this.idSquare);
+
+//   if(!bombs.includes(this.idSquare)) {
+//     score++;
+//     console.log(score);
+//   } else {
+//     console.log('FINE')
+//   }
+// }
+
+// function endGame(isWin) {
+//   let msg;
+//   const squares = document.getElementsByClassName('square');
+//   console.log(squares);
+//   if (isWin) {
+//     msg = 'Hai Vinto hai cliccato tutte le celle giuste!'
+//     console.log('VINTO');
+//   } else {
+//     console.log('PERSO');
+//     msg= 'hai perso '
+//   }
+//   document.querySelector('.endMessage').innerText = msg;
+// }
+
+// function generateCalc() {
+//   return `calc(100% / ${squareForRow})`;
+// }
+
+// function generateRandomNumber(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+
+
+const main = document.querySelector('.game_container');
+const playBtn = document.querySelector('#play');
+const levels = document.querySelector('#levels');
+
+
+const gridLevels = [100, 81, 49];
 const bombsNumber = 16;
 let bombs = [];
-let score = 0;
 
+playBtn.addEventListener('click', play);
 
-document.getElementById('start').addEventListener('click', function(){
-  squareForRow = document.querySelector('[name="levels"]').value;
-  container.innerHTML = '';
-  init(squareForRow);
-})
-
-
-function init(numElements) {
-  const totalSquares = numElements * numElements;
-  for(let i = 0; i < totalSquares; i++) {
- 
-    createSquare(i);
-    bombs = createBombs(squareForRow);
-    console.log(bombs)
-  }
+function play() {
+  const squareNumbers = gridLevels[levels.value];
   
+  reset();
+  
+
+  createPlayGround(squareNumbers);
+  bombs = createBombs(squareNumbers);
+  console.log(bombs);
 }
 
-function createSquare(idSquare) {
+function createPlayGround(squareNumbers) {
+  const grid = document.createElement('div');
+  grid.className = 'grid';
 
+  for(let i = 1; i <= squareNumbers; i++) {
+    const square = createSquare(i, squareNumbers);
+    grid.append(square);
+  }
+  main.append(grid)
+}
+
+function createSquare(squareId, squareNumbers) {
   const square = document.createElement('div');
-  square.className = 'square';
-  square.idSquare = idSquare + 1;
-  square.innerText = idSquare + 1;
-  square.style.width = generateCalc();
-  square.style.height = generateCalc();
-  square.addEventListener('click', clickSquare);
-  container.append(square);
+  square.className = 'square'
+
+  square.classList.add('square' + squareNumbers);
+  square.squareId = squareId;
+  square.innerHTML = `<span>${squareId}</span>`;
+
+  return square;
+
 }
 
-function createBombs(squareForRow) {
+function createBombs(squareNumbers) {
   const bombsId = [];
 
-  // // while (bombsId.length < bombsNumber) {
-  // //   const bomb = generateRandomNumber(1, squareForRow);   
-  // if (!bombsId.includes(bomb)) {
-  // //   bombsId.push(bomb)
-  // // }
-       
-  // //}
-
- return bombsId;
-}
-
-function clickSquare() {
-  this.classList.add('azure');
-  console.log(this.idSquare);
-
-  if(!bombs.includes(this.idSquare)) {
-    score++;
-    console.log(score);
-  } else {
-    console.log('FINE')
+  while(bombsId.length < bombsNumber){
+    const bomb = generateRandomNumber(1, squareNumbers);
+    if (!bombsId.includes(bomb)) {
+      bombsId.push(bomb);
+    }
   }
+
+  return bombsId;
 }
 
-function generateCalc() {
-  return `calc(100% / ${squareForRow})`;
-}
 
 function generateRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 
+function reset() {
+  main.innerText = '';
+}

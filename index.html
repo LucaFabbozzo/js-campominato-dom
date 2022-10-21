@@ -19,12 +19,12 @@
       </div>
       <div class="right">
         <label for="levels">Difficolta:</label>
-        <select name="levels">
-          <option value="10">Easy</option>
-          <option value="9">Medium</option>
-          <option value="7">Hard</option>
+        <select id="levels" name="levels">
+          <option value="0" selected>Easy</option>
+          <option value="1">Medium</option>
+          <option value="2">Hard</option>
         </select> 
-        <button id="start">Play</button>
+        <button id="play">Play</button>
       </div>
   </header>
 
@@ -36,10 +36,11 @@
       <div class="game_container">
         <h2>Seleziona il livello di difficoltà e genera la griglia</h2>
         <!-- generati dinamicamente js -->
-        <!-- <div class="square"
-        
+        <!-- <div class="grid">
+          <div class="square"><span>X</span></div>
         </div> -->
       </div>
+      <h3 class="endMessage"></h3>
     </div>
   </main>
 
@@ -49,6 +50,6 @@
   </footer>
 
   <!-- script -->
-  <script src="./js/script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
