@@ -49,6 +49,7 @@ function init(numElements) {
   for(let i = 0; i < totalSquares; i++) {
  
     createSquare(i);
+    createBombs();
   }
   
 }
@@ -63,6 +64,10 @@ function createSquare(idSquare) {
   square.style.height = generateCalc();
   square.addEventListener('click', clickSquare);
   container.append(square);
+}
+
+function createBombs(squareForRow) {
+  
 }
 
 
