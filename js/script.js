@@ -1,7 +1,3 @@
-// ****L’utente indica un livello di difficoltà in base al quale viene generata una griglia di gioco quadrata, in cui ogni cella contiene un numero tra quelli compresi in un range:
-// con difficoltà 1 => tra 1 e 100
-// con difficoltà 2 => tra 1 e 81
-// con difficoltà 3 => tra 1 e 49
 // Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe.
 // I numeri nella lista delle bombe non possono essere duplicati.
 // In seguito l’utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina, altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
@@ -10,13 +6,28 @@
 // **BONUS:**
 // 1- quando si clicca su una bomba e finisce la partita, evitare che si possa cliccare su altre celle
 // ****2- quando si clicca su una bomba e finisce la partita, il software scopre tutte le bombe nascoste
-// **Consigli del giorno:** :party_wizard:
-// ****Scriviamo prima cosa vogliamo fare passo passo in italiano, dividiamo il lavoro in micro problemi.
-// Ad esempio:
-// Di cosa ho bisogno per generare i numeri?
-// Proviamo sempre prima con dei console.log() per capire se stiamo ricevendo i dati giusti.
-// Le validazioni e i controlli possiamo farli anche in un secondo momento.
 
+
+
+//Macro aree:
+// - Aggiungere id alle celle
+// - creare le bombe tramite 16 numeri casuali nel range di difficolta.
+// CLICK cella:
+    //- ho pestato una bomba, se il numero è presente nei numeri generati abbiamo calpestato la bomba -> fine gioco
+    //- se la cella si colora di rosso la partita finisce altrimenti, di azzurro, allora puo' continuare a cliccare.
+// FINE gioco:
+    // stampare il risultato sotto la griglia
+    // congelare la griglia con un'altro livello sopra il container
+    // le bombe vengono accese tutte
+// al click di play -> RESET
+// PLAY -> RESET
+   //creo una nuova griglia
+   //creo altre bombe
+// RESET 
+    //cancello tutte le bombe
+    //cancello la griglia
+
+    
 
 const container = document.querySelector('.container');
 
@@ -52,6 +63,8 @@ function createSquare(idSquare) {
   square.style.height = generateCalc();
   square.addEventListener('click', clickSquare);
   container.append(square);
+
+  console.log(idSquare)
 }
 
 function generateCalc() {
