@@ -35,6 +35,7 @@ const select = document.querySelector('[name="levels"]');
 
 let squareForRow;
 const bombsNumber = 16;
+let bombs = [];
 
 
 document.getElementById('start').addEventListener('click', function(){
@@ -49,7 +50,7 @@ function init(numElements) {
   for(let i = 0; i < totalSquares; i++) {
  
     createSquare(i);
-    createBombs();
+    bombs = createBombs(squareForRow);
   }
   
 }
@@ -67,7 +68,9 @@ function createSquare(idSquare) {
 }
 
 function createBombs(squareForRow) {
-  
+  const bombsId = [];
+
+  return bombsId;
 }
 
 
