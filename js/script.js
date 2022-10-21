@@ -27,93 +27,6 @@
     //cancello tutte le bombe
     //cancello la griglia
 
-// const container = document.querySelector('.game_container');
-// // select levels
-// const select = document.querySelector('[name="levels"]');
-
-// let squareForRow;
-// const bombsNumber = 16;
-// let bombs = [];
-// let score = 0;
-
-
-
-// document.getElementById('start').addEventListener('click', function(){
-//   squareForRow = document.querySelector('[name="levels"]').value;
-//   container.innerHTML = '';
-//   init(squareForRow);
-// })
-
-
-// function init(numElements) {
-//   const totalSquares = numElements * numElements;
-//   for(let i = 0; i < totalSquares; i++) {
- 
-//    createSquare(i);
-
-//   }
-
-
-// }
-
-// function createSquare(idSquare) {
-
-//   const square = document.createElement('div');
-//   square.className = 'square';
-//   square.idSquare = idSquare + 1;
-//   square.innerText = idSquare + 1;
-//   square.style.width = generateCalc();
-//   square.style.height = generateCalc();
-//   square.addEventListener('click', clickSquare);
-//   container.append(square);
-// }
-
-// function createBombs(totalSquares) {
-  
-//    while (bombs.length < bombsNumber) {
-//       const bomb = generateRandomNumber(1, totalSquares);   
-//       if (!bombs.includes(bomb)) {
-//         bombs.push(bomb)
-//      }
-//     }
-
-    
-// }
-
-// function clickSquare() {
-//   this.classList.add('azure');
-//   console.log(this.idSquare);
-
-//   if(!bombs.includes(this.idSquare)) {
-//     score++;
-//     console.log(score);
-//   } else {
-//     console.log('FINE')
-//   }
-// }
-
-// function endGame(isWin) {
-//   let msg;
-//   const squares = document.getElementsByClassName('square');
-//   console.log(squares);
-//   if (isWin) {
-//     msg = 'Hai Vinto hai cliccato tutte le celle giuste!'
-//     console.log('VINTO');
-//   } else {
-//     console.log('PERSO');
-//     msg= 'hai perso '
-//   }
-//   document.querySelector('.endMessage').innerText = msg;
-// }
-
-// function generateCalc() {
-//   return `calc(100% / ${squareForRow})`;
-// }
-
-// function generateRandomNumber(min, max) {
-//   return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
-
 
 const main = document.querySelector('.game_container');
 const playBtn = document.querySelector('#play');
@@ -124,12 +37,21 @@ const gridLevels = [100, 81, 49];
 const bombsNumber = 16;
 let bombs = [];
 let score = 0;
+let squareForRow;
 
 playBtn.addEventListener('click', play);
 
 function play() {
   const squareNumbers = gridLevels[levels.value];
+  if (gridLevels[levels.value] === 100) {
+    squareForRow = 10;
+  } else if (gridLevels[levels.value] === 81) {
+    squareForRow =  9;
+  } else if (gridLevels[levels.value] === 49) {
+    squareForRow = 7;
+  }
   
+  generateCalc() 
   reset();
   
 
@@ -152,7 +74,8 @@ function createPlayGround(squareNumbers) {
 function createSquare(squareId, squareNumbers) {
   const square = document.createElement('div');
   square.className = 'square'
-
+  square.style.width = generateCalc();
+  square.style.height = generateCalc();
   square.classList.add('square' + squareNumbers);
   square.squareId = squareId;
   square.innerHTML = `<span>${squareId}</span>`;
@@ -160,6 +83,14 @@ function createSquare(squareId, squareNumbers) {
   return square;
 
 }
+
+
+function generateCalc() {
+   return `calc(100% / ${squareForRow})`;
+}
+
+
+
 
 function handleClickSquare() {
   this.classList.add('azure');
@@ -187,6 +118,9 @@ function endGame(isWin) {
   }
   document.querySelector('.endMessage').innerHTML = msg;
   showBombs();
+  const theEnd = document.createElement('div');
+  theEnd.className = 'end_game';
+  document.querySelector('.game_container').append(theEnd);
 }
 
 function showBombs() {
@@ -219,7 +153,8 @@ function generateRandomNumber(min, max) {
 
 
 function reset() {
-  main.innerText = '';
+  main.innerHTML = '';
   score = 0;
   document.querySelector('.endMessage').innerHTML = '';
 }
+

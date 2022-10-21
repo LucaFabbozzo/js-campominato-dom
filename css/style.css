@@ -47,14 +47,27 @@ select {
   background-color: #7DFFD4;
 }
 
-.grid {
+.game_container {
+  position: relative;
+}
+
+.end_game {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.25);
+}
+
+.grid { 
+ 
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   width: 510px;
   height: 510px;
   background-color: #7DFFD4;
-  margin-top: 50px;
 }
 
 .square {
@@ -62,8 +75,8 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(100% / 10);
-  height: calc(100% / 10);
+  /* width: calc(100% / 10);
+  height: calc(100% / 10); */
   border: 1px solid black;
 }
 
