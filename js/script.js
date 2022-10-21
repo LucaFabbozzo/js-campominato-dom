@@ -30,11 +30,10 @@
 
 
 const container = document.querySelector('.game_container');
-
-let squareForRow;
-
 // select levels
 const select = document.querySelector('[name="levels"]');
+
+let squareForRow;
 
 
 document.getElementById('start').addEventListener('click', function(){
@@ -48,23 +47,25 @@ function init(numElements) {
   const totalSquares = numElements * numElements;
   for(let i = 0; i < totalSquares; i++) {
  
-    createSquare(i)
+    createSquare(i);
   }
   
 }
-
 
 function createSquare(idSquare) {
 
   const square = document.createElement('div');
   square.className = 'square';
+  square.idSquare = idSquare;
   square.innerText = idSquare + 1;
   square.style.width = generateCalc();
   square.style.height = generateCalc();
   square.addEventListener('click', clickSquare);
   container.append(square);
 
+  console.log(idSquare);
 }
+
 
 function clickSquare() {
   console.log(this.innerText);
@@ -74,4 +75,5 @@ function clickSquare() {
 function generateCalc() {
   return `calc(100% / ${squareForRow})`;
 }
+
 
