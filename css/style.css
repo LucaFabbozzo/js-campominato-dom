@@ -9,6 +9,16 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+h1 {
+  font-weight: 600;
+  color: #151414;
+}
+
+h2, h3 {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
 
 /* header */
 
@@ -20,7 +30,8 @@ header {
   position: fixed;
   width: 100%;
   z-index: 999;
-  background-color: white;
+  background-color: #f3f1f1;
+  box-shadow: 1px 0px 1px rgba(0,0,0,.2);
 }
 
 button, select {
@@ -29,6 +40,7 @@ button, select {
   padding: 5px 10px;
   border: none;
   border-radius: 10px;
+  background-color: #d5d4d4;
 }
 
 select {
@@ -45,8 +57,8 @@ select {
   justify-content: space-evenly;
   align-items: center;
   height: calc(100vh - 30px);
-  background-color: #279ec5;
-  color: #f6f3f3;
+  background-color: #3f90ad;
+  color: #f6f2f2;
 }
 
 .game_container {
@@ -68,7 +80,8 @@ select {
   align-content: center;
   width: 450px;
   height: 450px;
-  background-color: #279ec5;
+  background-color: #3a97bc;
+  color: #f6f2f2;
 }
 
 .square {
@@ -82,7 +95,7 @@ select {
 }
 
 .azure {
-  background-color: #0c9d50;
+  background-color: #66898e;
 }
 
 .bomb {

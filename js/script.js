@@ -102,9 +102,9 @@ function endGame(isWin) {
   let msg;
   const square = document.getElementsByClassName('cell');
   if (isWin) {
-    msg = 'HAI VINTO!! sei riuscito a cliccare tutte le celle!!'
+    msg = 'HAI VINTO!! 🙂 sei riuscito a cliccare tutte le celle!!'
   } else {
-    msg = `Hai perso... Hai fatto ${score} punti, riprovaci!`
+    msg = `Hai perso...🥲 Hai fatto ${score} punti, riprovaci!`
   }
   document.querySelector('.endMessage').innerHTML = msg;
   showBombs();
