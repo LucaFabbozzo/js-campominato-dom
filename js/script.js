@@ -36,6 +36,7 @@ const select = document.querySelector('[name="levels"]');
 let squareForRow;
 const bombsNumber = 16;
 let bombs = [];
+let score = 0;
 
 
 document.getElementById('start').addEventListener('click', function(){
@@ -51,6 +52,7 @@ function init(numElements) {
  
     createSquare(i);
     bombs = createBombs(squareForRow);
+    console.log(bombs)
   }
   
 }
@@ -59,7 +61,7 @@ function createSquare(idSquare) {
 
   const square = document.createElement('div');
   square.className = 'square';
-  square.idSquare = idSquare;
+  square.idSquare = idSquare + 1;
   square.innerText = idSquare + 1;
   square.style.width = generateCalc();
   square.style.height = generateCalc();
@@ -70,17 +72,27 @@ function createSquare(idSquare) {
 function createBombs(squareForRow) {
   const bombsId = [];
 
-  while(bombsId.length < bombsNumber) {
+  // // while (bombsId.length < bombsNumber) {
+  // //   const bomb = generateRandomNumber(1, squareForRow);   
+  // if (!bombsId.includes(bomb)) {
+  // //   bombsId.push(bomb)
+  // // }
+       
+  // //}
 
-  }
-
-  return bombsId;
+ return bombsId;
 }
 
-
 function clickSquare() {
-  console.log(this.innerText);
   this.classList.add('azure');
+  console.log(this.idSquare);
+
+  if(!bombs.includes(this.idSquare)) {
+    score++;
+    console.log(score);
+  } else {
+    console.log('FINE')
+  }
 }
 
 function generateCalc() {
