@@ -27,9 +27,9 @@
     //cancello tutte le bombe
     //cancello la griglia
 
-    
 
-const container = document.querySelector('.container');
+
+const container = document.querySelector('.game_container');
 
 let squareForRow;
 
@@ -64,14 +64,14 @@ function createSquare(idSquare) {
   square.addEventListener('click', clickSquare);
   container.append(square);
 
-  console.log(idSquare)
-}
-
-function generateCalc() {
-  return `calc(100% / ${squareForRow})`;
 }
 
 function clickSquare() {
   console.log(this.innerText);
   this.classList.add('azure');
 }
+
+function generateCalc() {
+  return `calc(100% / ${squareForRow})`;
+}
+
