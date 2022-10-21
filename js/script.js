@@ -70,6 +70,10 @@ function createSquare(idSquare) {
 function createBombs(squareForRow) {
   const bombsId = [];
 
+  while(bombsId.length < bombsNumber) {
+
+  }
+
   return bombsId;
 }
 
@@ -81,6 +85,10 @@ function clickSquare() {
 
 function generateCalc() {
   return `calc(100% / ${squareForRow})`;
+}
+
+function generateRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 
