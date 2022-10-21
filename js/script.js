@@ -123,6 +123,7 @@ const levels = document.querySelector('#levels');
 const gridLevels = [100, 81, 49];
 const bombsNumber = 16;
 let bombs = [];
+let score = 0;
 
 playBtn.addEventListener('click', play);
 
@@ -155,9 +156,47 @@ function createSquare(squareId, squareNumbers) {
   square.classList.add('square' + squareNumbers);
   square.squareId = squareId;
   square.innerHTML = `<span>${squareId}</span>`;
-
+  square.addEventListener('click', handleClickSquare);
   return square;
 
+}
+
+function handleClickSquare() {
+  this.classList.add('azure');
+  if(!bombs.includes(this.squareId)) {
+    score++;
+    console.log(score);
+
+    const square = document.getElementsByClassName('square');
+
+    if (score === square.length - bombsNumber) {
+      endGame(true);
+    } 
+  } else {
+    endGame(false);
+  }
+}
+
+function endGame(isWin) {
+  let msg;
+  const square = document.getElementsByClassName('cell');
+  if (isWin) {
+    msg = 'HAI VINTO!!'
+  } else {
+    msg = 'Hai perso...'
+  }
+  document.querySelector('.endMessage').innerHTML = msg;
+  showBombs();
+}
+
+function showBombs() {
+  const squares = document.getElementsByClassName('square');
+  for(let i = 0; i < squares.length; i++) {
+    const square = squares[i];
+    if(bombs.includes(square.squareId)) {
+      square.classList.add('bomb');
+    }
+  }
 }
 
 function createBombs(squareNumbers) {
@@ -181,4 +220,6 @@ function generateRandomNumber(min, max) {
 
 function reset() {
   main.innerText = '';
+  score = 0;
+  document.querySelector('.endMessage').innerHTML = '';
 }
