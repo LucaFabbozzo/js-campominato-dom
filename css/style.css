@@ -16,7 +16,7 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 65px;
+  height: 50px;
   position: fixed;
   width: 100%;
   z-index: 999;
@@ -41,10 +41,12 @@ select {
 
 .main-wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   height: calc(100vh - 30px);
-  background-color: #7DFFD4;
+  background-color: #279ec5;
+  color: #f6f3f3;
 }
 
 .game_container {
@@ -61,13 +63,12 @@ select {
 }
 
 .grid { 
- 
   display: flex;
   flex-wrap: wrap;
   align-content: center;
-  width: 510px;
-  height: 510px;
-  background-color: #7DFFD4;
+  width: 450px;
+  height: 450px;
+  background-color: #279ec5;
 }
 
 .square {
@@ -81,11 +82,11 @@ select {
 }
 
 .azure {
-  background-color: #179369;
+  background-color: #0c9d50;
 }
 
 .bomb {
-  background-color: #591a1a;
+  background-color: #301212;
 }
 
 
