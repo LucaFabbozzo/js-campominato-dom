@@ -51,7 +51,7 @@ select {
 /* main */
 
 
-.main-wrapper {
+.game_container {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
