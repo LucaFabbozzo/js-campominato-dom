@@ -92,7 +92,7 @@ function generateSquare(cellId, squareNumbers) {
 
   square.innerHTML = `<span>${cellId}</span>`;
   //evento click del quadrato
-  square.addEventListener('click', handleClickSquare);
+  square.addEventListener('click', handleClickSquare, {once: true});
   return square
 }
 
