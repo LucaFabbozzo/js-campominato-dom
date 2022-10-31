@@ -63,14 +63,14 @@ function play() {
 
 
 // funzione per generare il campo di gioco
-function generatePlayArea(squareNumbers){
+function generatePlayArea(squares){
   // genero la griglia
   const grid = document.createElement('div');
   grid.className = 'grid';
 
   // genero i quadratini
-  for(let i = 1; i <= squareNumbers; i++) {
-    const square = generateSquare(i, squareNumbers);
+  for(let i = 1; i <= squares; i++) {
+    const square = generateSquare(i, squares);
     grid.append(square);
   }
 
@@ -79,11 +79,11 @@ function generatePlayArea(squareNumbers){
 }
 
 //funzione per generare i quadratini
-function generateSquare(cellId, squareNumbers) {
+function generateSquare(cellId, squares) {
   const square = document.createElement('div');
   square.className = 'square';
 
-  square.classList.add('square' + squareNumbers);
+  square.classList.add('square' + squares);
 
   //proprieta custum assegnazione id al quadratino
   square.cellId = cellId;
@@ -130,8 +130,7 @@ function theEnd(isWin) {
 
   //stampo il risultato dinamicamente
   let msg;
-  //creo la collection array che contiene tutti i quadrati 
-  const squares = document.getElementsByClassName('cell');
+  
 
   if (isWin) {
     msg = 'Hai Vinto!! sei riuscito a sopravvivere 😅'
